@@ -1,0 +1,44 @@
+<h1>ToDo - List</h1>
+
+<table>
+  <tr>
+    <th>Description</th>
+    <th>Assigned to</th>
+    <th>Done</th>
+  </tr>
+
+  <tr>
+    <th>Filter:</th>
+    <td>
+      <select [(ngModel)] = "personFilter">
+        <option>Nobody</option>
+        <option *ngFor = 'let person of people'> {{ person.name }}</option>
+      </select> 
+    </td>
+    <td>
+      <select [(ngModel)] = "doneFilter">
+        <option selected>All</option>
+        <option>Done</option>
+        <option>Open</option>
+      </select> 
+    </td>
+  </tr>
+
+  <tr *ngFor = "let todo of todos">   <!--Apply the Filter-->
+    <td>{{ todo.description }} </td>
+    <td>{{ todo.assignedTo }} </td>
+    <td><input type ="checkbox" /> {{ todo.done }}</td>
+    <!--<td><input type ="button" (click)="deleteTodo()" value = "Delete"/></td>-->
+  </tr>
+
+  <tr>
+    <td><input [(ngModel)] = "description" /> </td>
+    <td>
+      <select [(ngModel)] = "selectedPerson">
+        <option *ngFor = "let person of people"> {{ person.name }}</option>
+        <option>Nobody</option>
+      </select> 
+    </td>
+    <td><input type ="button" (click)="createTodo()" value = "Create"/></td>
+  </tr>
+</table>
